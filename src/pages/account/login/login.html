@@ -1,0 +1,149 @@
+<ion-header class="account-header" no-border>
+    <ion-navbar color="header">
+        <ion-title> </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="login-pages">
+    <div class="logo-image"> <img src="../../../assets/image/logo.png"> </div>
+    <div class="login-register">
+        <div *ngIf="!values.isLoggedIn">
+            <div class="segment">
+                <ion-segment [(ngModel)]="segment" (ionChange)="updateSchedule()">
+                    <ion-segment-button value="Login">
+                        <ion-label>{{"Login" | translate}}</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="register">
+                        <ion-label>{{"Register" | translate}}</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
+            </div>
+            <div [hidden]="showLogin">
+                <div class="margin">
+                    <form #f="ngForm" class="login">
+                        <ion-list>
+                            <ion-item>
+                                <ion-input required type="email" [(ngModel)]="loginData.username" name="firstname" placeholder="{{'Username' | translate}}"> </ion-input>
+                                <ion-icon name="md-mail" item-left></ion-icon>
+                            </ion-item>
+                            <ion-item *ngIf="!showPasswordEnable">
+                                <ion-input required type="password" [(ngModel)]="loginData.password" name="password" placeholder="{{'Password' | translate}}"> </ion-input>
+                                <ion-icon name="md-key" item-left></ion-icon>
+                                <ion-icon *ngIf="loginData.password" item-right name="ios-eye" (click)="showPassword()" style="font-size: 2.5rem;z-index:10"></ion-icon>
+                            </ion-item>
+                            <ion-item *ngIf="showPasswordEnable">
+                                <ion-input required type="text" [(ngModel)]="loginData.password" name="password" placeholder="{{'Password' | translate}}"> </ion-input>
+                                <ion-icon name="md-key" item-left></ion-icon>
+                                <ion-icon item-right name="ios-eye-off" (click)="hidePassword()" style="font-size: 2.5rem;z-index:10"></ion-icon>
+                            </ion-item>
+                            <h2 tappable (click)="forgotten(loginData)">{{"Forgot Password" | translate}}?</h2>
+                        </ion-list> <button ion-button block color="button-color" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" (click)="login()">{{LogIn | translate}}
+      </button> <br> <br>
+                        <!--hr> <br> <button ion-button block clear type="submit" class="button button-block button-default or-button" text-uppercase style="color: #999;">{{"Or" | translate}}
+      </button>
+                        <h2 text-center style="margin:10px 0 0;font-size:14px;">{{"Connect With" | translate}}</h2>
+                        <ion-row class="socialButtons">
+                            <ion-col class="col1"> <button ion-button block type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" (click)="facebookLogin()">
+            <ion-icon item-left style="color:#fff; padding-right: 5px;" ios="logo-facebook" md="logo-facebook"></ion-icon>
+             Facebook
+          </button> </ion-col>
+                            <ion-col class="col2"> <button ion-button block type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" (click)="gmailLogin()">
+            <ion-icon style="color:#fff; padding-right: 5px;" ios="logo-google" md="logo-google"></ion-icon>
+             Google
+          </button> </ion-col>
+                        </ion-row-->
+                    </form> <br> </div>
+            </div>
+            <div [hidden]="!showLogin" class="margin">
+                <form #f="ngForm" class="login">
+                    <ion-list>
+                        <ion-item>
+                            <ion-input required type="text" [(ngModel)]="registerData.first_name" name="firstname" placeholder="{{'Full Name' | translate}}"> </ion-input>
+                            <ion-icon name="ios-contact" item-left></ion-icon>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input required type="email" [(ngModel)]="registerData.email" name="Email" placeholder="{{'Email' | translate}}"> </ion-input>
+                            <ion-icon name="md-mail" item-left></ion-icon>
+                        </ion-item>
+                        <ion-item *ngIf="!showPasswordEnable">
+                            <ion-input required type="password" [(ngModel)]="registerData.password" name="password" placeholder="{{'Password' | translate}}"> </ion-input>
+                            <ion-icon name="md-key" item-left></ion-icon>
+                            <ion-icon item-right *ngIf="registerData.password" name="ios-eye" (click)="showPassword()" style="font-size: 2.5rem;"></ion-icon>
+                        </ion-item>
+                        <ion-item *ngIf="showPasswordEnable">
+                            <ion-input required type="text" [(ngModel)]="registerData.password" name="password" placeholder="{{'Password' | translate}}"> </ion-input>
+                            <ion-icon name="md-key" item-left></ion-icon>
+                            <ion-icon item-right name="ios-eye-off" (click)="hidePassword()" style="font-size: 2.5rem;"></ion-icon>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input required type="number" [(ngModel)]="registerData.billing.phone" name="billing_phone" placeholder="{{'Phone' | translate}}"> </ion-input>
+                            <ion-icon name="md-call" item-left></ion-icon>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input required type="text" [(ngModel)]="registerData.billing.address_1" name="billing_1" placeholder="{{'Address' | translate}}"> </ion-input>
+                            <ion-icon name="md-locate" item-left></ion-icon>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input required type="text" [(ngModel)]="registerData.billing.city" name="billing_city" placeholder="{{'City' | translate}}"> </ion-input>
+                            <ion-icon name="ios-home" item-left></ion-icon>
+                        </ion-item>
+                    </ion-list>
+                    <div *ngIf="errors" class="margin-error-message">
+                        <h3>{{errors.message}} </h3>
+                    </div> <br> <button ion-button block color="button-color" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" (click)="registerCustomer()">{{Register | translate}}
+        </button> </form>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="values.isLoggedIn" class="account-list">
+        <!--ion-label class="shop-name">RESTAURANT</ion-label-->
+        <ion-card>
+            <ion-item tappable (click)="address()"> {{"Address" | translate}}
+                <!--ion-icon item-left ios="md-locate" md="md-locate"></ion-icon-->
+                <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
+            </ion-item>
+            <ion-item tappable (click)="orders()"> {{"Oders" | translate}}
+                <!--ion-icon item-left ios="md-reorder" md="md-reorder"></ion-icon-->
+                <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
+            </ion-item>
+            <ion-item tappable (click)="wishlist()"> {{"Wishlist" | translate}}
+                <!--ion-icon name="md-heart" item-left></ion-icon-->
+                <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
+            </ion-item>
+            <ion-item tappable (click)="aboutUs()"> {{"About Us" | translate}}
+                <!--ion-icon item-left ios="ios-contact"></ion-icon-->
+                <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
+            </ion-item>
+            <ion-item tappable (click)="blog('blog')" class="log-out"> {{"Our Blog" | translate}}
+                <!--ion-icon name="md-log-out"></ion-icon-->
+                <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
+            </ion-item>
+            <ion-item tappable (click)="blog('offers')" class="log-out"> {{"Our Offers" | translate}}
+                <!--ion-icon name="md-log-out"></ion-icon-->
+                <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
+            </ion-item>
+            <ion-item tappable (click)="blog('help')" class="log-out"> {{"Help Center" | translate}}
+                <!--ion-icon name="md-log-out"></ion-icon-->
+                <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
+            </ion-item>
+            <ion-item tappable (click)="shareApp()" class="log-out"> {{"Share App" | translate}}
+                <!--ion-icon name="md-log-out"></ion-icon-->
+                <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
+            </ion-item>
+            <ion-item tappable (click)="rateApp()" class="log-out"> {{"Rate App" | translate}}
+                <!--ion-icon name="md-log-out"></ion-icon-->
+                <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
+            </ion-item>
+            <ion-item tappable (click)="contact()" class="log-out"> {{"Contact Us" | translate}}
+                <!--ion-icon name="md-log-out"></ion-icon-->
+                <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
+            </ion-item>
+            <!--ion-item tappable (click)="blog('example')" class="log-out"> {{"Example" | translate}}
+                <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
+            </ion-item-->
+            <ion-item tappable (click)="logout()" class="log-out"> {{"Logout" | translate}}
+                <!--ion-icon name="md-log-out"></ion-icon-->
+                <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
+            </ion-item>
+        </ion-card>
+    </div>
+</ion-content>

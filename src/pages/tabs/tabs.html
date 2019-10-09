@@ -1,0 +1,7 @@
+<ion-tabs class="tabs">
+  <ion-tab [root]="tab1Root" tabTitle="{{'Menu' | translate}}" tabIcon="ios-restaurant"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="{{'Cart' | translate}}" tabIcon="md-basket" tabBadge="{{values.count > 0 ? values.count : null}}" tabBadgeStyle="button-color"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="{{'Orders' | translate}}" tabIcon="md-list"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="{{'Account' | translate}}" tabIcon="md-person"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="{{'Map' | translate}}" tabIcon="map"></ion-tab>
+</ion-tabs>

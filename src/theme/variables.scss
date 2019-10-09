@@ -1,0 +1,68 @@
+
+@import "ionic.globals";
+
+$text-color:        #000;
+$background-color:  #fff;
+
+$colors: (
+  primary:    #387ef5,
+  secondary:  #32db64,
+  danger:     #df186d,
+  light:      #f4f4f4,
+  dark:       #000,
+  shadow:     #bf4080,
+  shadowlite: #f9ebf2,
+
+
+  //color options
+  darkpink:   #bf4080,
+  darkpinklite: #f9ebf2,
+
+  skyblue:    #50b7c0,
+  skybluelite:#daeff1,
+
+  red:        #f44336,
+  redlite:    #fdcece,
+
+  blue:       #3b5998,
+  bluelite:   #dae1f1,
+
+  danger-tint:   #f25454,
+  
+
+  //customise header color here
+  header:     #ffffff,
+
+  //customise button color here
+  button-color: #ffd31a,
+
+  //customise text color here
+  side-heading-color:  #ff4b00
+
+);
+
+  $shadowlite: #f9ebf2;
+  $shadow: #bf4080;
+
+ //customise header color here
+  $header:     #ffffff;
+
+  //customise button color here
+  $button-color: #ffd31a;
+  
+
+  //customise toggle-button color here
+  $toggle-button-color: #ff4b00;
+
+  //customise text color here
+  $side-heading-color:  #ff4b00;
+
+  //customise text color here
+  $page-background:  #ffffff;
+
+
+@import "ionic.theme.default";
+
+
+$ionicons-font-path: "../assets/fonts";
+@import "ionicons";

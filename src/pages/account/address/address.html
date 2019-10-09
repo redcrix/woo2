@@ -1,0 +1,16 @@
+<ion-header class="address-header">
+    <ion-navbar color="header">
+        <ion-title>{{"Address" | translate}} </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content text-wrap class="account-address">
+    <ion-spinner *ngIf="!addresses" name="crescent"> </ion-spinner>
+    <div *ngIf="addresses">
+        <ion-card *ngIf="addresses.billing">
+            <ion-card-header style="background-color: #f5f5f5"> {{"Billing Address" | translate}} </ion-card-header>
+            <ion-item text-wrap> {{addresses.billing.first_name}} {{addresses.billing.last_name}} {{addresses.billing.phone}} {{addresses.billing.address_1}} {{addresses.billing.address_2}} {{addresses.billing.city}} {{addresses.billing.state}} {{addresses.billing.country}} {{addresses.billing.postcode}} {{addresses.billing.phone}}
+                <div (click)="changeAddress()" tappable style="padding: 10px 0 0; color: #f25454; text-transform: uppercase;">{{"Change" | translate}}</div>
+            </ion-item>
+        </ion-card>
+    </div>
+</ion-content>

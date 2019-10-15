@@ -49,25 +49,42 @@
                     <ion-input required type="number" [(ngModel)]="form.billing_postcode" name="postcode"> </ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-label> {{"Country" | translate}} </ion-label>
-                    <ion-select [(ngModel)]="form.billing_country" (ngModelChange)="changeRegion(form.billing_country)" name="billing_country">
+                    <p class="Label"> {{"Country" | translate}} </p>
+
+                    <p class="Label_">Nigeria</p>
+                    <!-- <ion-select [(ngModel)]="form.billing_country" (ngModelChange)="changeRegion(form.billing_country)" name="billing_country">
                         <div *ngFor="let field of form.country.countries | keys">
                             <ion-option value="{{field.key}}"><span [innerHTML]="field.value"></span> </ion-option>
                         </div>
-                    </ion-select>
+                    </ion-select> -->
                 </ion-item>
                 <ion-item *ngIf="states" class="state">
                     <ion-label> {{"State" | translate}} </ion-label>
-                    <ion-select [(ngModel)]="form.billing_state" name="billing_state">
+
+                    <!-- <ion-select [(ngModel)]="zone.kind">
+                            <ion-option *ngFor="#key of modeKeys">{{key}}</ion-option>
+                          </ion-select> -->
+
+
+                    <!-- <ion-select [(ngModel)]="form.billing_state" name="billing_state">
+                        
                         <div *ngFor="let field of states | keys">
                             <ion-option value="{{field.key}}">{{field.value}} </ion-option>
                         </div>
-                    </ion-select>
+                    </ion-select> -->
                 </ion-item>
                 <ion-item *ngIf="!states" class="state">
-                    <ion-label floating> {{"State" | translate}} </ion-label>
-                    <ion-input required type="text" [(ngModel)]="form.billing_state" name="billing_state"> </ion-input>
+                    <ion-label > {{"State" | translate}} </ion-label>
+                    <ion-select [(ngModel)]="form.billing_state" name="billing_state"  >
+                        
+                        <div >
+                            <ion-option *ngFor="let field of modeKeys" [value]="field.val">{{field.val}} </ion-option>
+                        </div>
+                    </ion-select>
+                    <!-- <ion-input required type="text" [(ngModel)]="form.billing_state" name="billing_state"> </ion-input> -->
                 </ion-item>
+
+                <!-- <button (click)="billing_state()">clc</button> -->
             </ion-list>
             <ion-item *ngIf="!values.isLoggedIn" no-lines class="side-heading-background create-account">
                 <ion-label color="side-heading-color">{{"Create Account" | translate}} </ion-label>

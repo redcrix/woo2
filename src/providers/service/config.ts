@@ -12,7 +12,7 @@ export class Config {
     url: any = 'https://www.foodiesonline.com.ng/mobileapp';
     consumerKey: any = 'ck_d8dccb53d414df133bbd132e43b08bb2d2cf32e6';
     consumerSecret: any = 'cs_b5f4f6805189e5aabceb432025108db4c0fc39b2';
-    
+    webClientId: any = '46321665625-ijt4ok3jjm70j3asp9bjg9sdua2olbb5.apps.googleusercontent.com';
     avatar: any = "assets/image/shop-icon.jpg";
     oauth: any;
     signedUrl: any;

@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Platform } from 'ionic-angular';
 //import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions } from '@ionic-native/google-maps';
-
+import { CallNumber } from '@ionic-native/call-number/ngx';
 declare var google: any;
 
 @Component({
@@ -14,23 +14,15 @@ export class MapPage {
     locations: any = [];
     //map: GoogleMap;
     @ViewChild('mapCanvas') mapElement: ElementRef;
-    constructor(public platform: Platform) {
+    constructor(public platform: Platform,private callNumber: CallNumber) {
        // this.myLocation.lat = 34.0522;
        // this.myLocation.lng = -118.2437;
 
     this.locations = [{
-        "name": "Monona Terrace Convention Center",
-        "lat": 43.071584,
-        "lng": -89.380120,
+        "name": "Foodies",
+        "lat": 6.4455982,
+        "lng": 3.459396,
         "center": true
-      }, {
-        "name": "Ionic HQ",
-        "lat": 43.074395,
-        "lng": -89.381056
-      }, {
-        "name": "Afterparty - Brocach Irish Pub",
-        "lat": 43.07336,
-        "lng": -89.38335
       }];
 
     }
@@ -85,4 +77,12 @@ export class MapPage {
             });
         });*/
     }
+
+
+    Phn_dialer(Numbr){
+        this.callNumber.callNumber(Numbr, true)
+        .then(res => console.log('Launched dialer!', res))
+        .catch(err => console.log('Error launching dialer', err));
+    }
+   
 }

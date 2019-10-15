@@ -1,18 +1,31 @@
 @font-face {
-    //  font-family: 'Montserrat-Regular';
-    // src: url("../assets/font/Montserrat/Montserrat-Regular.ttf");
+     font-family: 'Montserrat-Regular';
+    src: url("../assets/font/Montserrat/Montserrat-Regular.ttf");
 }
 @font-face {
-    //font-family: 'Montserrat-Light';
-    // src: url("../assets/font/Montserrat/Montserrat-Light.ttf");
+    font-family: 'Montserrat-Light';
+    src: url("../assets/font/Montserrat/Montserrat-Light.ttf");
 }
 @font-face {
-    // font-family: 'Ubuntu-Regular';
-    //src: url("../assets/font/Ubuntu-Regular.ttf");
+    font-family: 'Ubuntu-Regular';
+    src: url("../assets/font/Ubuntu-Regular.ttf");
 }
 * {
-    // font-family: 'Montserrat-Regular';
+    font-family: 'Montserrat-Regular';
 }
+
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('../assets/font/Gotham-Light.otf'); //mine
+  
+  }
+  
+  .p{
+    font-family: Gotham !important;
+  }
+
+
 .rtl {
     .item-ios ion-icon[item-left], .item-ios ion-icon[item-right] {
         margin-top: 9px;
@@ -181,3 +194,14 @@ a {
     color: #ffff !important;
     background-color: #db2026 !important;
 }
+
+ion-card.card.card-md {
+    text-shadow: none !important;
+    font-weight: bold !important;
+}
+
+ion-card.card.card-ios {
+    text-shadow: none !important;
+    font-weight: bold !important;
+}
+

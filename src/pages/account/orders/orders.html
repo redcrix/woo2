@@ -5,14 +5,14 @@
 </ion-header>
 <ion-content text-wrap class="account-order">
    <ion-spinner *ngIf="!values.orders && values.isLoggedIn" name="crescent"> </ion-spinner>
-         <div class="empty" *ngIf="!values.isLoggedIn"> <img src="assets/image/empty-cart.png">
+         <div class="empty" *ngIf="!values.isLoggedIn"> <img src="../../../assets/image/cutlery.png">
             <!--h4 color="side-heading-color" text-center no-lines>{{"Login" | translate}}</h4-->
             <h5 text-center no-lines>{{"You must login to see orders" | translate}}</h5> <button ion-button class="login-text" item-center medium color="button-color" text-uppercase (click)="Login()">{{"Login" | translate}}</button>
          </div>
    <div *ngIf="values.orders && values.isLoggedIn">
       <div class="no-orders" *ngIf="values.orders.length == 0">
          <h4 text-center no-lines>
-            <img src="assets/image/empty-cart.png">
+            <img src="../../../assets/image/cutlery.png">
             <button ion-button full clear>{{"You haven't placed andy orders yet." | translate}}
             </button>
          </h4>

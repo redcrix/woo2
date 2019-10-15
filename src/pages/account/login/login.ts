@@ -16,8 +16,11 @@ import { AccountForgotten } from '../forgotten/forgotten';
 import { AppRate } from '@ionic-native/app-rate';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { EmailComposer } from '@ionic-native/email-composer';
-//import { Facebook } from '@ionic-native/facebook';
-//import { GooglePlus } from '@ionic-native/google-plus';
+import { PrivateDiningPage } from '../../private-dining/private-dining';
+import { OutdoorCateringPage } from '../../outdoor-catering/outdoor-catering';
+import { AboutPage } from '../about/about';
+// import { Facebook } from '@ionic-native/facebook';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 @Component({
     selector: 'page-login',
@@ -47,7 +50,7 @@ export class Login {
     showPasswordEnable: boolean = false;
     lan: any = {};
 
-    constructor(public translate: TranslateService, public platform: Platform, public nav: NavController, public values: Values, public config: Config, private oneSignal: OneSignal, public service: Service, public functions: Functions, private emailComposer: EmailComposer, private appRate: AppRate, private socialSharing: SocialSharing/*, private googlePlus: GooglePlus, private fb: Facebook*/) {
+    constructor(private googlePlus: GooglePlus,  public translate: TranslateService, public platform: Platform, public nav: NavController, public values: Values, public config: Config, private oneSignal: OneSignal, public service: Service, public functions: Functions, private emailComposer: EmailComposer, private appRate: AppRate, private socialSharing: SocialSharing/*, private googlePlus: GooglePlus, private fb: Facebook*/) {
         this.loginData = [];
         this.LogIn = "LogIn";
         this.account = "loginSegment";
@@ -83,6 +86,7 @@ export class Login {
             this.service.login(this.loginData).then((results) => this.handleResults(results));
         }
     }
+
     validateForm() {
         if (this.loginData.username == undefined || this.loginData.username == "") {
             return false
@@ -93,6 +97,7 @@ export class Login {
             return true
         }
     }
+
     handleResults(results) {
         this.disableSubmit = false;
         this.LogIn = "LogIn";
@@ -102,31 +107,48 @@ export class Login {
             this.functions.showAlert(this.lan.ErrorTitle, this.lan.ErrorMessage);
         }
     }
+
     orders() {
         this.nav.parent.select(2);
     }
+
     address() {
         this.nav.push(Address);
     }
+
     aboutUs() {
-        this.nav.push(MapPage);
+        this.nav.push(AboutPage);
     }
+
     terms() {
         this.nav.push(TermsCondition);
     }
+
     blog(data) {
         this.nav.push(Blog, data);
     }
+
     logout() {
         this.values.isLoggedIn = false;
         this.service.logout();
     }
+
     wishlist() {
         this.nav.push(WishlistPage);
     }
+
     forgotten(loginData) {
         this.nav.push(AccountForgotten);
     }
+
+    PrivateDining(){
+        this.nav.push(PrivateDiningPage);
+    }
+
+    OutdoorCatering(){
+        this.nav.push(OutdoorCateringPage);
+    }
+
     getBillingRegion(countryId) {
         this.billing_states = this.countries.state[countryId];
     }
@@ -180,28 +202,34 @@ export class Login {
             this.functions.showAlert(this.lan.ErrorTitle, results.message);
         }
     }
-    /*facebookLogin() {
-        this.facebookSpinner = true;
-        this.fb.login(['email']).then((response) => {
-            console.log(response.authResponse.accessToken);
-            this.service.sendToken(response.authResponse.accessToken).then((results) => {
-                this.facebookSpinner = false;
-                //this.functions.showAlert('success', 'Logged in sus');
-                //this.nav.pop();
-            });
-        }).catch((error) => {
-            console.log(error)
-            this.facebookSpinner = false;
-            this.functions.showAlert('Error', error);
-        });
+    facebookLogin() {
+        alert('pending');
+        // this.facebookSpinner = true;
+        // this.fb.login(['email']).then((response) => {
+        //     console.log(response.authResponse.accessToken);
+        //     this.service.sendToken(response.authResponse.accessToken).then((results) => {
+        //         this.facebookSpinner = false;
+        //         //this.functions.showAlert('success', 'Logged in sus');
+        //         //this.nav.pop();
+        //     });
+        // }).catch((error) => {
+        //     console.log(error)
+        //     this.facebookSpinner = false;
+        //     this.functions.showAlert('Error', error);
+        // });
     }
     gmailLogin() {
+        console.log('tt');
+
+        let webClientId: any = '46321665625-ijt4ok3jjm70j3asp9bjg9sdua2olbb5.apps.googleusercontent.com';
+   
         this.googleSpinner = true;
         this.googlePlus.login({
             'scopes': '',
-            'webClientId': this.values.settings.google_web_client_id,
+            'webClientId': webClientId,
             'offline': true
         }).then((res) => {
+            console.log(res);
             //this.functions.showAlert("er", res);
             this.googleSpinner = false;
             this.values.avatar = res.imageUrl;
@@ -215,7 +243,7 @@ export class Login {
             this.googleSpinner = false;
             console.error(err);
         });
-    }*/
+    }
     updateSchedule() {
         if (this.showLogin) {
             this.showLogin = false;

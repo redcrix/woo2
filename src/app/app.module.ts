@@ -60,10 +60,10 @@ import { AppRate } from '@ionic-native/app-rate';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { Vibration } from '@ionic-native/vibration';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
-//import { Facebook } from '@ionic-native/facebook';
-//import { GooglePlus } from '@ionic-native/google-plus';
+// import { Facebook } from '@ionic-native/facebook/ngx';
+import { GooglePlus } from '@ionic-native/google-plus';
 
-
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -157,8 +157,8 @@ export function createTranslateLoader(http: HttpClient) {
   SearchService,
   Service,
   Values,
-  //GooglePlus,
-  //Facebook,
+  GooglePlus,
+  // Facebook,
   StatusBar,
   SplashScreen,
   InAppBrowser,
@@ -170,6 +170,7 @@ export function createTranslateLoader(http: HttpClient) {
   ScreenOrientation,
   Network,
   Vibration,
+  CallNumber,
   //HTTP,
   {provide: ErrorHandler, useClass: IonicErrorHandler}
 

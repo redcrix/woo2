@@ -19,7 +19,7 @@ export class TabsPage {
   tab2Root = CartPage;
   tab3Root = Orders;
   tab4Root = Login;
-  tab5Root = ProductsPage;
+  tab5Root = MapPage;
 
   constructor( public values: Values, public functions: Functions) {
 

@@ -4,7 +4,7 @@
     </ion-navbar>
 </ion-header>
 <ion-content class="login-pages">
-    <div class="logo-image"> <img src="../../../assets/image/logo.png"> </div>
+    <div class="logo-image"> <img class="Logo_" src="../../../assets/image/logo.png"> </div>
     <div class="login-register">
         <div *ngIf="!values.isLoggedIn">
             <div class="segment">
@@ -38,10 +38,10 @@
                             <h2 tappable (click)="forgotten(loginData)">{{"Forgot Password" | translate}}?</h2>
                         </ion-list> <button ion-button block color="button-color" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" (click)="login()">{{LogIn | translate}}
       </button> <br> <br>
-                        <!--hr> <br> <button ion-button block clear type="submit" class="button button-block button-default or-button" text-uppercase style="color: #999;">{{"Or" | translate}}
+            <br> <button ion-button block clear type="submit" class="button button-block button-default or-button" text-uppercase style="color: #999;">{{"Or" | translate}}
       </button>
                         <h2 text-center style="margin:10px 0 0;font-size:14px;">{{"Connect With" | translate}}</h2>
-                        <ion-row class="socialButtons">
+        <ion-row class="socialButtons">
                             <ion-col class="col1"> <button ion-button block type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" (click)="facebookLogin()">
             <ion-icon item-left style="color:#fff; padding-right: 5px;" ios="logo-facebook" md="logo-facebook"></ion-icon>
              Facebook
@@ -50,7 +50,7 @@
             <ion-icon style="color:#fff; padding-right: 5px;" ios="logo-google" md="logo-google"></ion-icon>
              Google
           </button> </ion-col>
-                        </ion-row-->
+        </ion-row>
                     </form> <br> </div>
             </div>
             <div [hidden]="!showLogin" class="margin">
@@ -101,18 +101,22 @@
                 <!--ion-icon item-left ios="md-locate" md="md-locate"></ion-icon-->
                 <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
             </ion-item>
-            <ion-item tappable (click)="orders()"> {{"Oders" | translate}}
+            <ion-item tappable (click)="orders()"> {{"Orders" | translate}}
                 <!--ion-icon item-left ios="md-reorder" md="md-reorder"></ion-icon-->
-                <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
-            </ion-item>
-            <ion-item tappable (click)="wishlist()"> {{"Wishlist" | translate}}
-                <!--ion-icon name="md-heart" item-left></ion-icon-->
                 <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
             </ion-item>
             <ion-item tappable (click)="aboutUs()"> {{"About Us" | translate}}
                 <!--ion-icon item-left ios="ios-contact"></ion-icon-->
                 <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
             </ion-item>
+            <ion-item tappable (click)="OutdoorCatering()"> {{"Outdoor Catering" | translate}}
+                    <!--ion-icon item-left ios="ios-contact"></ion-icon-->
+                    <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
+                </ion-item>
+                <ion-item tappable (click)="PrivateDining()"> {{"Private Dining" | translate}}
+                        <!--ion-icon item-left ios="ios-contact"></ion-icon-->
+                        <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>
+                    </ion-item>
             <ion-item tappable (click)="blog('blog')" class="log-out"> {{"Our Blog" | translate}}
                 <!--ion-icon name="md-log-out"></ion-icon-->
                 <ion-icon item-right class="ion-ios-arrow-forward item-icon"></ion-icon>

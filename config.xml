@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.mstoreapp.restaurant001" version="0.1.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Restaurant</name>
-    <description>An awesome Ionic/Cordova app.</description>
+<widget id="com.avantview.foodies" version="0.1.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Foodies</name>
+    <description>Hot and Spicy</description>
     <author email="support@mstoreapp.com" href="http://mstoreapp.com/">Mstoreapp Team</author>
     <content src="index.html" />
     <access origin="*" />

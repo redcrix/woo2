@@ -1,7 +1,7 @@
 <ion-header class="home-header">
     <ion-navbar color="my-header-color"> 
 
-        <ion-title><img src="../../assets/image/logo.png" style='height: 45px;'> 
+        <ion-title><img src="../../assets/image/header-logo.png" style='height: 45px;'> 
         </ion-title>
         <ion-buttons end> 
             <button ion-button icon-only (click)="getSearch()" class="my-search-icon">
@@ -14,9 +14,13 @@
 
 <ion-content class="home">
 
+    <p class="fodiexx">Foodies Hot & Spicy</p>
+
     <ion-refresher *ngIf="values.settings?.pull_to_refresh == '1'" (ionRefresh)="doRefresh($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
+
+
 
     <div class="spinner center-spinner"><ion-spinner *ngIf="loading" name="crescent"> </ion-spinner></div>
 

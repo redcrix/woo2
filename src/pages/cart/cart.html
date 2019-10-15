@@ -17,7 +17,7 @@
         <ion-spinner name="crescent"> </ion-spinner>
     </div>
     <div *ngIf="values.cartItems?.cart_contents">
-        <div class="empty" *ngIf="values.cartItems?.cart_contents?.length == 0"> <img src="assets/image/empty-cart.png">
+        <div class="empty" *ngIf="values.cartItems?.cart_contents?.length == 0"> <img src="../../assets/image/cart.png">
             <h4 color="side-heading-color" text-center no-lines>{{"Your cart is empty!" | translate}}</h4>
             <h5 text-center no-lines>{{"Add some delicious food available on our menu to checkout" | translate}}</h5> <button ion-button class="butt" item-center medium color="button-color" text-uppercase (click)="gohome()">{{"Continue Shopping" | translate}}</button> </div>
         <div *ngIf="values.cartItems?.cart_contents?.length != 0">

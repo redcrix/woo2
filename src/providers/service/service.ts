@@ -46,7 +46,7 @@ export class Service {
             this.http.get(this.config.url + '/wp-admin/admin-ajax.php?action=mstoreapp-keys', this.config.options).map(res => res.json()).subscribe(data => {
 
 
-                console.log('DATA ==== = = ==',JSON.stringify(data));
+                // console.log('DATA ==== = = ==',JSON.stringify(data));
                 this.values.currency = data.currency;
                 this.login_nonce = data.login_nonce;
                 this.values.max_price = data.max_price;
@@ -101,7 +101,7 @@ export class Service {
                 }
                 this.http.get(this.config.setUrl('GET', '/wp-json/wc/v2/products/categories?', {per_page: 100}), this.config.optionstwo).map(res => res.json()).subscribe(data => {
                     this.categories = data;
-                    alert('cat='+JSON.stringify(this.categories));
+                    // alert('cat='+JSON.stringify(this.categories));
                     this.mainCategories = [];
                     for (var i = 0; i < this.categories.length; i++) {
                         if (this.categories[i].parent == '0') {
@@ -145,6 +145,8 @@ export class Service {
         params.append("redirect", this.config.url + '/wp-admin/admin-ajax.php?action=mstoreapp-userdata');
         return new Promise(resolve => {
             this.http.post(this.config.url + '/wp-admin/admin-ajax.php?action=mstoreapp-login', params, this.config.options).map(res => res.json()).subscribe(data => {
+
+                console.log('CHECK RES == '+JSON.stringify(data));
                 if (!data.errors) {
                     this.values.isLoggedIn = data.data.status;
                     this.values.customerName = data.data.user_nicename;
@@ -153,6 +155,7 @@ export class Service {
                     params = new URLSearchParams();
                     params.append("customer_id", this.values.customerId.toString());
                     this.http.post(this.config.url + '/wp-admin/admin-ajax.php?action=mstoreapp-get_wishlist', params, this.config.options).map(res => res.json()).subscribe(data => {
+                        console.log('CHECK RES 2 == '+JSON.stringify(data));
                         for (let item in data) {
                             this.values.wishlistId[data[item].id] = data[item].id;
                         }

@@ -32,7 +32,7 @@ export class AccountForgotten {
     }
 
     ngOnInit() {
-        this.translate.get(['Success', 'SuccessMessage']).subscribe(translations => {
+        this.translate.get(['Success', 'Message:']).subscribe(translations => {
             this.lan.Success = translations.Success;
             this.lan.SuccessMessage = translations.SuccessMessage;
         })

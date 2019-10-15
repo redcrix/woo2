@@ -120,7 +120,7 @@
             font-size: 14px;
         }
     }
-    .list>.item-block:first-child, {
+    .list>.item-block:first-child {
         border-top: 1px solid #edecf1;
     }
     .list .item-block .item-inner {
@@ -158,7 +158,7 @@
             font-size: 14px;
         }
     }
-    .list>.item-block:last-child, {
+    .list>.item-block:last-child{
         border-bottom: none;
     }
     .item-input ion-input, .item-input ion-textarea {
@@ -224,4 +224,26 @@
     .toolbar-title-md {
         padding-right: 75px;
     }
+}
+
+p.Label_ {
+    float: right;
+    margin-top: -20px;
+    font-weight: bold;
+}
+
+ion-select.select.select-md.ng-untouched.ng-pristine.ng-valid {
+    padding: 22px;
+}
+
+ion-select.select.select-ios.ng-untouched.ng-pristine.ng-valid {
+    padding: 22px;
+}
+
+ion-select.select.select-md.ng-valid.ng-dirty.ng-touched {
+    padding: 22px;
+}
+
+ion-select.select.select-ios.ng-valid.ng-dirty.ng-touched {
+    padding: 22px;
 }

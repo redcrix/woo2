@@ -48,21 +48,18 @@ $colors: (
   $header:     #ffffff;
 
   //customise button color here
-  $button-color: #ffd31a;
+  $button-color: #fcd166;
   
 
   //customise toggle-button color here
-  $toggle-button-color: #ff4b00;
+  $toggle-button-color: #db2026;
 
   //customise text color here
-  $side-heading-color:  #ff4b00;
+  $side-heading-color: #db2026;
 
   //customise text color here
   $page-background:  #ffffff;
-
-
+  
 @import "ionic.theme.default";
-
-
 $ionicons-font-path: "../assets/fonts";
 @import "ionicons";

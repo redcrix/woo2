@@ -102,7 +102,7 @@ export class Login {
         this.disableSubmit = false;
         this.LogIn = "LogIn";
         if (!results.errors) {
-           // this.functions.showAlert(this.lan.Success, this.lan.LoginSuccessMessage);
+           this.functions.showAlert(this.lan.Success, this.lan.LoginSuccessMessage);
         } else if (results.errors) {
             this.functions.showAlert(this.lan.ErrorTitle, this.lan.ErrorMessage);
         }
@@ -189,13 +189,16 @@ export class Login {
                 this.loginStatus = results;
                 this.disableSubmit = false;
             });
-            if (this.platform.is('cordova')) {
-                this.oneSignal.sendTags({
-                    email: this.registerData.email,
-                    pincode: this.registerData.billing_address.postcode,
-                    city: this.registerData.billing_address.city
-                });
-            }
+
+            this.functions.showAlert(this.lan.ErrorTitle, results.message);
+            
+            // if (this.platform.is('cordova')) {
+            //     this.oneSignal.sendTags({
+            //         email: this.registerData.email,
+            //         pincode: this.registerData.billing_address.postcode,
+            //         city: this.registerData.billing_address.city
+            //     });
+            // }
             this.nav.setRoot(Login);
         } else if (results.code) {
             this.disableSubmit = false;

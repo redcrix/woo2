@@ -253,4 +253,78 @@ export class BillingAddressForm {
         this.service.updateOrderReview(this.form)
             .then((results) => this.handleOrderReviews(results));
     }
+
+
+
+    ChargeCard(){
+
+        let card = '10101010101010';
+    
+        let month = '10';
+    
+        let cvc = '123';
+    
+        let year = '2020';
+    
+        let amount = '200';
+    
+        let email = 'shubam@redcrix.com';
+    
+      console.log(card);
+    
+        console.log(month);
+    
+          console.log(cvc);
+    
+            console.log(year);
+    
+              console.log(amount);
+    
+                console.log(email);
+    
+    
+              // Now safe to use device APIs
+    
+              (<any>window).window.PaystackPlugin.chargeCard(
+    
+                (resp) =>{
+    
+                  //this.pop.showPayMentAlert(“Payment Was Successful”, “We will Now Refund Your Balance”);
+    
+                  console.log('charge successful: ', resp);
+    
+                  alert('Payment Was Successful' );
+    
+                },
+    
+                (resp) =>{
+    
+            
+    
+               alert('We Encountered An Error While Charging Your Card'+resp );
+    
+                },
+    
+                {
+    
+                  cardNumber: card,
+    
+                  expiryMonth: month,
+    
+                  expiryYear: year,
+    
+                  cvc: cvc,
+    
+                  email: email,
+    
+                  amountInKobo: amount,
+    
+              })
+    
+          
+    
+  
+    
+      }
+
 }

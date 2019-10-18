@@ -1,0 +1,52 @@
+<ion-header no-border class="map-header">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="map-page">
+  <div style="height: 50%; width: 100%" #mapCanvas id="map_canvas"></div>
+  <div padding>
+      <p class="fodie">Foodies Hot & Spicy</p>
+  	<p>
+      <b> Opening Hours</b> 
+   
+    </p>
+
+    <p class="_p">   Monday – Sunday ( 8:00 AM – 12:00 AM )</p>
+
+    <p>
+        <b> Location</b> 
+      </p>
+
+      <p class="_p">   Admiralty Way, Lekki Phase I, ( Lekki, Lagos )</p>
+
+
+      <p>
+          <b> Phones </b> 
+        </p>
+
+        <p class="_p">  
+          <span class="Phn_dialer" (click)="Phn_dialer('01-277-6700')">01-277-6700</span>, 
+          <span class="Phn_dialer" (click)="Phn_dialer('01-277-6701')"> 01-277-6701</span>, 
+          <span class="Phn_dialer" (click)="Phn_dialer('0706 651 4119')">0706 651 4119</span> 
+            
+          </p>
+
+
+        <p>
+            <b class="b_"> Delivery:</b> 
+            <span class="Phn_dialer" (click)="Phn_dialer('0811 111 4265')"> 0811 111 4265</span> 
+           
+          </p>
+
+          <p>
+              <b class="b_">  Events and Table Reservations:</b> 
+              <span class="Phn_dialer" (click)="Phn_dialer('0906 000 0683')">0906 000 0683</span> 
+            </p>   
+  
+  </div>
+  
+</ion-content>

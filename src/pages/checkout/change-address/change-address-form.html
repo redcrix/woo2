@@ -1,0 +1,101 @@
+<ion-header class="billing-header">
+    <ion-navbar color="header"> <button ion-button menuToggle>
+      <ion-icon name="menu">
+      </ion-icon>
+    </button>
+        <ion-title>{{"Address" | translate}} </ion-title>
+        <ion-buttons end>
+    <button ion-button (click)="dismiss()">
+        <ion-icon name="md-close" style="color: #000; font-size: 20px; margin: 16px;"></ion-icon>
+      </button>
+    </ion-buttons>
+</ion-navbar>
+</ion-header>
+<ion-content text-wrap class="change-address-form">
+    <ion-card>
+        <ion-card-header style="background-color: #f5f5f5"> {{"Delivery Address" | translate}} </ion-card-header>
+        <form #f="ngForm" class="form">
+            <ion-list no-margin>
+                <ion-item>
+                    <ion-label floating>{{"First Name" | translate}} </ion-label>
+                    <ion-input required type="text" [(ngModel)]="form.billing_first_name" name="firstname"> </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>{{"Last Name"| translate}} </ion-label>
+                    <ion-input required type="text" [(ngModel)]="form.billing_last_name" name="lastname"> </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>{{"Phone" | translate}} </ion-label>
+                    <ion-input required type="number" [(ngModel)]="form.billing_phone" name="telephone"> </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>{{"Street Address" | translate}} 1 </ion-label>
+                    <ion-input required type="text" [(ngModel)]="form.billing_address_1" name="street1"> </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>{{"Street Address" | translate}} 2 </ion-label>
+                    <ion-input required type="text" [(ngModel)]="form.billing_address_2" name="street2"> </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>{{"Email" | translate}} </ion-label>
+                    <ion-input required type="email" [(ngModel)]="form.billing_email" name="email"> </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>{{"City" | translate}} </ion-label>
+                    <ion-input required type="text" [(ngModel)]="form.billing_city" name="city"> </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>{{"Postcode" | translate}} </ion-label>
+                    <ion-input required type="number" [(ngModel)]="form.billing_postcode" name="postcode"> </ion-input>
+                </ion-item>
+                <ion-item>
+                    <p class="Label"> {{"Country" | translate}} </p>
+
+                    <p class="Label_">Nigeria</p>
+                    <!-- <ion-select [(ngModel)]="form.billing_country" (ngModelChange)="changeRegion(form.billing_country)" name="billing_country">
+                        <div *ngFor="let field of form.country.countries | keys">
+                            <ion-option value="{{field.key}}"><span [innerHTML]="field.value"></span> </ion-option>
+                        </div>
+                    </ion-select> -->
+                </ion-item>
+                <ion-item *ngIf="states" class="state">
+                    <ion-label> {{"State" | translate}} </ion-label>
+
+                    <!-- <ion-select [(ngModel)]="zone.kind">
+                            <ion-option *ngFor="#key of modeKeys">{{key}}</ion-option>
+                          </ion-select> -->
+
+
+                    <!-- <ion-select [(ngModel)]="form.billing_state" name="billing_state">
+                        
+                        <div *ngFor="let field of states | keys">
+                            <ion-option value="{{field.key}}">{{field.value}} </ion-option>
+                        </div>
+                    </ion-select> -->
+                </ion-item>
+                <ion-item *ngIf="!states" class="state">
+                    <ion-label > {{"State" | translate}} </ion-label>
+                    <ion-select [(ngModel)]="form.billing_state" name="billing_state"  >
+                        
+                        <div >
+                            <ion-option *ngFor="let field of modeKeys" [value]="field.val">{{field.val}} </ion-option>
+                        </div>
+                    </ion-select>
+                    <!-- <ion-input required type="text" [(ngModel)]="form.billing_state" name="billing_state"> </ion-input> -->
+                </ion-item>
+
+                <!-- <button (click)="billing_state()">clc</button> -->
+            </ion-list>
+            <ion-item *ngIf="!values.isLoggedIn" no-lines class="side-heading-background create-account">
+                <ion-label color="side-heading-color">{{"Create Account" | translate}} </ion-label>
+                <ion-toggle color="danger" checked="true" [(ngModel)]="form.register" name="subscribe"> </ion-toggle>
+            </ion-item>
+            <ion-item *ngIf="form.register">
+                <ion-label floating>{{"Password" | translate}} </ion-label>
+                <ion-input required type="password" [(ngModel)]="form.password" name="password"> </ion-input>
+            </ion-item>
+        </form>
+        <div class="save-button"> <button class="save-button" ion-button color="button-color" text-uppercase (click)="saveAddress()" block secondary type="submit" class="button button-block button-default">{{"Save Address" | translate}}
+    </button> </div>
+    </ion-card>
+</ion-content>

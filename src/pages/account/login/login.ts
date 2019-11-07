@@ -19,7 +19,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { PrivateDiningPage } from '../../private-dining/private-dining';
 import { OutdoorCateringPage } from '../../outdoor-catering/outdoor-catering';
 import { AboutPage } from '../about/about';
-// import { Facebook } from '@ionic-native/facebook';
+import { Facebook } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
 
 @Component({
@@ -50,7 +50,7 @@ export class Login {
     showPasswordEnable: boolean = false;
     lan: any = {};
 
-    constructor(private googlePlus: GooglePlus,  public translate: TranslateService, public platform: Platform, public nav: NavController, public values: Values, public config: Config, private oneSignal: OneSignal, public service: Service, public functions: Functions, private emailComposer: EmailComposer, private appRate: AppRate, private socialSharing: SocialSharing/*, private googlePlus: GooglePlus, private fb: Facebook*/) {
+    constructor(  public translate: TranslateService, public platform: Platform, public nav: NavController, public values: Values, public config: Config, private oneSignal: OneSignal, public service: Service, public functions: Functions, private emailComposer: EmailComposer, private appRate: AppRate, private socialSharing: SocialSharing, private googlePlus: GooglePlus, private fb: Facebook) {
         this.loginData = [];
         this.LogIn = "LogIn";
         this.account = "loginSegment";
@@ -206,30 +206,30 @@ export class Login {
         }
     }
     facebookLogin() {
-        alert('pending');
-        // this.facebookSpinner = true;
-        // this.fb.login(['email']).then((response) => {
-        //     console.log(response.authResponse.accessToken);
-        //     this.service.sendToken(response.authResponse.accessToken).then((results) => {
-        //         this.facebookSpinner = false;
-        //         //this.functions.showAlert('success', 'Logged in sus');
-        //         //this.nav.pop();
-        //     });
-        // }).catch((error) => {
-        //     console.log(error)
-        //     this.facebookSpinner = false;
-        //     this.functions.showAlert('Error', error);
-        // });
+       
+        this.facebookSpinner = true;
+        this.fb.login(['email']).then((response) => {
+            console.log(response.authResponse.accessToken);
+            this.service.sendToken(response.authResponse.accessToken).then((results) => {
+                this.facebookSpinner = false;
+                this.functions.showAlert('success', 'Logged in sus');
+                //this.nav.pop();
+            });
+        }).catch((error) => {
+            console.log(error)
+            this.facebookSpinner = false;
+            this.functions.showAlert('Error', error);
+        });
     }
     gmailLogin() {
         console.log('tt');
 
-        let webClientId: any = '46321665625-ijt4ok3jjm70j3asp9bjg9sdua2olbb5.apps.googleusercontent.com';
+        // let webClientId: any = '46321665625-ijt4ok3jjm70j3asp9bjg9sdua2olbb5.apps.googleusercontent.com';
    
         this.googleSpinner = true;
         this.googlePlus.login({
             'scopes': '',
-            'webClientId': webClientId,
+            'webClientId': '46321665625-ijt4ok3jjm70j3asp9bjg9sdua2olbb5.apps.googleusercontent.com',
             'offline': true
         }).then((res) => {
             console.log(res);
@@ -288,7 +288,7 @@ export class Login {
     }
     contact() {
         let email = {
-            to: this.values.settings.support_email,
+            to: 'support@foodiesonline.com.ng',
             subject: '',
             body: '',
             isHtml: true

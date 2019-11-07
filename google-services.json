@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:46321665625:android:f456108f409525a5659348",
+        "mobilesdk_app_id": "1:46321665625:android:c0940bc3063e578d659348",
         "android_client_info": {
-          "package_name": "com.avantview.foodies"
+          "package_name": "com.greenwill.cleanever"
         }
       },
       "oauth_client": [

@@ -275,9 +275,15 @@ export class Service {
         var params = customer;
         return new Promise(resolve => {
             this.http.post(this.config.setUrl('POST', '/wp-json/wc/v2/customers?', false), params, {withCredentials: false}).map(res => res.json()).subscribe(data => {
+                
+                console.log('REGISTER DATA == '+data);
+                
                 this.user = data;
                 resolve(this.user);
             }, err => {
+
+                console.log('REGISTER ERROR == '+err);
+                
                 resolve(JSON.parse(err._body));
             });
         });

@@ -34,8 +34,8 @@ export class Values {
   selectedFilter: any = {};
   price: any = {lower: 1, upper: 1000};
   sortType: any;
-  dimensions: any = {imageGridViewHeight: 100, imageProductViewHeight: 100, scrollProductHeight: 100, productSliderWidth : 42};
-  settings: any = {"show_featured":"1","show_onsale":"1","show_latest":"1","pull_to_refresh":"1","onesignal_app_id":"","google_project_id":"","google_web_client_id":"","rate_app_ios_id":"","rate_app_android_id":"","rate_app_windows_id":"","share_app_android_link":"","share_app_ios_link":"","support_email":"","image_height":"100","product_slider_width":"42","enable_product_chat":"0","enable_home_chat":"0","whatsapp_number":"","language":"english"};
+  dimensions: any = {imageGridViewHeight: 50, imageProductViewHeight: 100, scrollProductHeight: 100, productSliderWidth : 42};
+  settings: any = {"show_featured":"1","show_onsale":"1","show_latest":"1","pull_to_refresh":"1","onesignal_app_id":"","google_project_id":"","google_web_client_id":"","rate_app_ios_id":"","rate_app_android_id":"","rate_app_windows_id":"","share_app_android_link":"","share_app_ios_link":"","support_email":"","image_height":"90","product_slider_width":"42","enable_product_chat":"0","enable_home_chat":"0","whatsapp_number":"","language":"english"};
   constructor() {
     this.data = {};
     this.sortType = 0;

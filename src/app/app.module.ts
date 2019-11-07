@@ -30,6 +30,8 @@ import { ChangeAddressForm } from '../pages/checkout/change-address/change-addre
 import { EditAddressForm } from '../pages/account/edit-address-form/edit-address-form';
 import { BillingAddressForm } from '../pages/checkout/billing-address-form/billing-address-form';
 
+import { PrivateDiningPage } from '../pages/private-dining/private-dining';
+import { OutdoorCateringPage } from '../pages/outdoor-catering/outdoor-catering';
 /*------------------------Providers----------------------------------*/
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -60,9 +62,8 @@ import { AppRate } from '@ionic-native/app-rate';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { Vibration } from '@ionic-native/vibration';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
-// import { Facebook } from '@ionic-native/facebook/ngx';
+import { Facebook } from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
-
 import { CallNumber } from '@ionic-native/call-number/ngx';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -96,7 +97,9 @@ export function createTranslateLoader(http: HttpClient) {
     OrderDetails,
     ChangeAddressForm,
     EditAddressForm,
-    BillingAddressForm
+    BillingAddressForm,
+    PrivateDiningPage,
+    OutdoorCateringPage
 
   ],
 
@@ -141,7 +144,9 @@ export function createTranslateLoader(http: HttpClient) {
     OrderDetails,
     ChangeAddressForm,
     EditAddressForm,
-    BillingAddressForm
+    BillingAddressForm,
+    PrivateDiningPage,
+    OutdoorCateringPage
 
   ],
 
@@ -158,7 +163,7 @@ export function createTranslateLoader(http: HttpClient) {
   Service,
   Values,
   GooglePlus,
-  // Facebook,
+  Facebook,
   StatusBar,
   SplashScreen,
   InAppBrowser,

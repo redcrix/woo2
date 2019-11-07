@@ -46,7 +46,9 @@ export class ChangeAddressForm {
       },
       {
         val : 'Obalende'
-      },
+      }, 
+      
+      
       
       
       ];
@@ -56,7 +58,10 @@ export class ChangeAddressForm {
       console.log(this.form.state);
       this.values.form = params.data;
       //this.states = this.form.state[this.form.billing_country];
-      // this.states = this.form.state['NG'];
+      this.states = this.form.state['NG'];
+
+      console.log('============='+JSON.stringify(this.states));
+      
     }
     getRegion(countryId) {
         this.states = this.form.state['NG'];

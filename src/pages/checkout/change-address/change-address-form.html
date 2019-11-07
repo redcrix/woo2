@@ -40,9 +40,17 @@
                     <ion-label floating>{{"Email" | translate}} </ion-label>
                     <ion-input required type="email" [(ngModel)]="form.billing_email" name="email"> </ion-input>
                 </ion-item>
-                <ion-item>
-                    <ion-label floating>{{"City" | translate}} </ion-label>
-                    <ion-input required type="text" [(ngModel)]="form.billing_city" name="city"> </ion-input>
+                <ion-item class="state">
+                    <ion-label >{{"City" | translate}} </ion-label>
+
+                    <ion-select [(ngModel)]="form.billing_city" name="billing_state"  >
+                        
+                        <div >
+                            <ion-option *ngFor="let field of modeKeys" [value]="field.val">{{field.val}} </ion-option>
+                        </div>
+                    </ion-select>
+
+                    <!-- <ion-input required type="text" [(ngModel)]="form.billing_city" name="city"> </ion-input> -->
                 </ion-item>
                 <ion-item>
                     <ion-label floating>{{"Postcode" | translate}} </ion-label>
@@ -58,27 +66,19 @@
                         </div>
                     </ion-select> -->
                 </ion-item>
-                <ion-item *ngIf="states" class="state">
-                    <ion-label> {{"State" | translate}} </ion-label>
-
-                    <!-- <ion-select [(ngModel)]="zone.kind">
-                            <ion-option *ngFor="#key of modeKeys">{{key}}</ion-option>
-                          </ion-select> -->
-
-
-                    <!-- <ion-select [(ngModel)]="form.billing_state" name="billing_state">
-                        
-                        <div *ngFor="let field of states | keys">
-                            <ion-option value="{{field.key}}">{{field.value}} </ion-option>
-                        </div>
-                    </ion-select> -->
-                </ion-item>
-                <ion-item *ngIf="!states" class="state">
+          
+                <ion-item  class="state">
                     <ion-label > {{"State" | translate}} </ion-label>
-                    <ion-select [(ngModel)]="form.billing_state" name="billing_state"  >
+                    <!-- <ion-select [(ngModel)]="form.billing_state" name="billing_state"  >
                         
                         <div >
                             <ion-option *ngFor="let field of modeKeys" [value]="field.val">{{field.val}} </ion-option>
+                        </div>
+                    </ion-select> -->
+                    <ion-select [(ngModel)]="form.billing_state" name="billing_state">
+                        
+                        <div *ngFor="let field of states | keys">
+                            <ion-option value="{{field.key}}">{{field.value}} </ion-option>
                         </div>
                     </ion-select>
                     <!-- <ion-input required type="text" [(ngModel)]="form.billing_state" name="billing_state"> </ion-input> -->

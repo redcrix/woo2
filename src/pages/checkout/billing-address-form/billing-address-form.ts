@@ -62,6 +62,11 @@ export class BillingAddressForm {
     }
 
     ngOnInit() {
+
+        // console.log('CHECK BILLING METHOD = = '+ JSON.stringify(this.form));
+
+        console.log('CHECK BILLING METHOD = = '+ JSON.stringify(this.form.payment));
+
         this.translate.get(['Success', 'LoginSuccessMessage', 'ErrorTitle', 'ErrorMessage', 'Status']).subscribe(translations => {
             this.lan.Success = translations.Success;
             this.lan.LoginSuccessMessage = translations.LoginSuccessMessage;
@@ -87,6 +92,11 @@ export class BillingAddressForm {
     checkout() {
         this.buttonSubmit = true;
         this.PlaceOrder = "Placing Order";
+
+        console.log(this.form.payment_method);
+        console.log(this.form.payment[this.form.payment_method].id);
+
+
         if (this.form.shipping) {
             this.form.shipping_first_name = this.form.billing_first_name;
             this.form.shipping_last_name = this.form.billing_last_name;
@@ -106,6 +116,30 @@ export class BillingAddressForm {
             this.service.getStripeToken(this.form)
                 .then((results) => this.handleStripeToken(results));
         }
+
+        else if (this.form.payment_method == 'paystack') {
+
+            console.log('Custom payment - -');
+            // this.service.getStripeToken(this.form)
+            //     .then((results) => this.handleStripeToken(results));
+
+            console.log("card[number]", this.form.stripe_number);
+            console.log("card[cvc]", this.form.stripe_code);
+            // params.append("card[exp_month]", form.stripe_exp_month);
+            // params.append("card[exp_year]", form.stripe_exp_year);
+            // params.append("card[name]", form.billing_first_name + form.billing_last_name);
+            // params.append("card[address_line1]", form.billing_address_1);
+            // params.append("card[address_line2]", form.billing_address_2);
+            // params.append("card[address_state]", form.billing_state);
+            // params.append("card[address_city]", form.billing_city);
+            // params.append("card[address_zip]", form.billing_postcode);
+            // params.append("card[address_country]", form.billing_country);
+
+            this.ChargeCard();
+
+        }
+
+
         else {
             this.service.checkout(this.form)
                 .then((results) => this.handlePayment(results));
@@ -214,7 +248,11 @@ export class BillingAddressForm {
         this.showCreateAccont = true;
     }
     changePayment() {
+        console.log('ONE');
         this.form.payment_instructions = this.form.payment[this.form.payment_method].description;
+
+        console.log('TWO = '+ this.form.payment_instructions);
+
         this.buttonSubmit = false;
         this.buttonText = "Continue to " + this.form.payment[this.form.payment_method].method_title;
     }
@@ -258,17 +296,23 @@ export class BillingAddressForm {
 
     ChargeCard(){
 
-        let card = '10101010101010';
+        let card = '4084 0840 8408 4081';
     
         let month = '10';
     
-        let cvc = '123';
+        let cvc = '408';
     
         let year = '2020';
     
         let amount = '200';
     
-        let email = 'shubam@redcrix.com';
+        let email = 'hello@redcrix.com';
+
+        console.log("card[number]", this.form.stripe_number);
+        console.log("card[cvc]", this.form.stripe_code);
+        console.log("card[exp_month]", this.form.stripe_exp_month);
+        console.log("card[exp_year]", this.form.stripe_exp_year);
+
     
       console.log(card);
     
@@ -281,6 +325,33 @@ export class BillingAddressForm {
               console.log(amount);
     
                 console.log(email);
+
+
+      
+                    let PayStackClient = window['paystack'] || [];
+                    PayStackClient.chargeCard(
+                      (resp) => {
+                        // A valid one-timme-use token is obtained, do your thang!
+                        console.log('charge successful: ', resp);
+                      },
+                      (resp) => {
+                        // Something went wrong, oops - perhaps an invalid card.
+                        console.log('charge failed: ', resp);
+                      },
+                      {
+                        cardNumber: '4123450131001381', 
+                        expiryMonth: '10', 
+                        expiryYear: '17', 
+                        cvc: '883',
+                        email: 'chargeIOS@master.dev',
+                        amountInKobo: 150000,
+                        subAccount: 'ACCT_pz61jjjsslnx1d9',
+                    });
+               
+                
+                  //console.log((<any>window).window.PaystackPlugin)
+
+
     
     
               // Now safe to use device APIs
@@ -293,7 +364,7 @@ export class BillingAddressForm {
     
                   console.log('charge successful: ', resp);
     
-                  alert('Payment Was Successful' );
+                  alert('Payment Was Successful'+resp );
     
                 },
     

@@ -9,6 +9,7 @@ import { OrderSummary } from '../order-summary/order-summary';
 import { TermsCondition } from '../terms-condition/terms-condition';
 import { ChangeAddressForm } from '../change-address/change-address-form';
 import { TranslateService } from '@ngx-translate/core';
+import {  LoadingController } from 'ionic-angular/index';
 
 @Component({
     templateUrl: 'billing-address-form.html'
@@ -43,8 +44,18 @@ export class BillingAddressForm {
     hour: any;
     showPasswordEnable: boolean = false;
     lan: any = {};
+    CheckOut_on_payment = false;
+    loadingPopup:any;
 
-    constructor(public translate: TranslateService, public modalCtrl: ModalController, public iab: InAppBrowser, public nav: NavController, public service: CheckoutService, params: NavParams, public functions: Functions, public values: Values) {
+    constructor(private loadingCtrl: LoadingController,public translate: TranslateService, public modalCtrl: ModalController, public iab: InAppBrowser, public nav: NavController, public service: CheckoutService, params: NavParams, public functions: Functions, public values: Values) {
+        
+        this.loadingPopup = this.loadingCtrl.create({
+            content: 'Loading data...'
+          });
+
+          
+
+
         this.PlaceOrder = "Place Order";
         this.buttonText1 = "Apply";
         this.LogIn = "LogIn";
@@ -93,6 +104,8 @@ export class BillingAddressForm {
         this.buttonSubmit = true;
         this.PlaceOrder = "Placing Order";
 
+        this.loadingPopup.present();
+       
         console.log(this.form.payment_method);
         console.log(this.form.payment[this.form.payment_method].id);
 
@@ -108,7 +121,7 @@ export class BillingAddressForm {
             this.form.shipping_state = this.form.billing_state;
             this.form.shipping_postcode = this.form.billing_postcode;
         }
-        if (this.form.payment_method == 'bacs' || this.form.payment_method == 'cheque' || this.form.payment_method == 'cod') {
+        if (this.form.payment_method == 'bacs' || this.form.payment_method == 'cod') {
             this.service.checkout(this.form)
                 .then((results) => this.handleBilling(results));
         }
@@ -117,32 +130,42 @@ export class BillingAddressForm {
                 .then((results) => this.handleStripeToken(results));
         }
 
-        else if (this.form.payment_method == 'paystack') {
+        else if (this.form.payment_method == 'cheque') {
+
+            this.service.checkout(this.form)
+            .then((results) => this.handleBilling(results));
+
+
+            // this.handle_PayStack();
+            // this.getPayStackToken(this.form);
+
+            // if(this.CheckOut_on_payment){
+
+            //     alert('This To Be Work?');
+              
+            // }
+            // .then((results) => this.handleStripeToken(results));
+
 
             console.log('Custom payment - -');
-            // this.service.getStripeToken(this.form)
-            //     .then((results) => this.handleStripeToken(results));
+            // this.service.checkout(this.form)
+            // .then((results) => this.handleBilling(results));
 
-            console.log("card[number]", this.form.stripe_number);
-            console.log("card[cvc]", this.form.stripe_code);
-            // params.append("card[exp_month]", form.stripe_exp_month);
-            // params.append("card[exp_year]", form.stripe_exp_year);
-            // params.append("card[name]", form.billing_first_name + form.billing_last_name);
-            // params.append("card[address_line1]", form.billing_address_1);
-            // params.append("card[address_line2]", form.billing_address_2);
-            // params.append("card[address_state]", form.billing_state);
-            // params.append("card[address_city]", form.billing_city);
-            // params.append("card[address_zip]", form.billing_postcode);
-            // params.append("card[address_country]", form.billing_country);
-
-            this.ChargeCard();
+            // this.ChargeCard();
 
         }
 
 
         else {
+
+
             this.service.checkout(this.form)
                 .then((results) => this.handlePayment(results));
+
+                setTimeout(() => {
+                    this.loadingPopup.dismiss();
+                  }, 6000);
+
         }
     }
     handlePayment(results) {
@@ -183,6 +206,19 @@ export class BillingAddressForm {
             .then((results) => this.handleStripeToken(results));
     }
     handleStripeToken(results) {
+        if (results.error) {
+            this.buttonSubmit = false;
+            this.PlaceOrder = "Place Order";
+            this.functions.showAlert(this.lan.ErrorTitle, results.error.message);
+        }
+        else {
+            this.service.stripePlaceOrder(this.form, results)
+                .then((results) => this.handleBilling(results));
+                this.buttonSubmit = false;
+        }
+    }
+
+    handle_PayStack(results){
         if (results.error) {
             this.buttonSubmit = false;
             this.PlaceOrder = "Place Order";
@@ -248,8 +284,12 @@ export class BillingAddressForm {
         this.showCreateAccont = true;
     }
     changePayment() {
-        console.log('ONE');
+
         this.form.payment_instructions = this.form.payment[this.form.payment_method].description;
+
+        // let Log = this.form.payment[this.form.payment_method];
+
+
 
         console.log('TWO = '+ this.form.payment_instructions);
 
@@ -296,17 +336,7 @@ export class BillingAddressForm {
 
     ChargeCard(){
 
-        let card = '4084 0840 8408 4081';
     
-        let month = '10';
-    
-        let cvc = '408';
-    
-        let year = '2020';
-    
-        let amount = '200';
-    
-        let email = 'hello@redcrix.com';
 
         console.log("card[number]", this.form.stripe_number);
         console.log("card[cvc]", this.form.stripe_code);
@@ -314,88 +344,124 @@ export class BillingAddressForm {
         console.log("card[exp_year]", this.form.stripe_exp_year);
 
     
-      console.log(card);
-    
-        console.log(month);
-    
-          console.log(cvc);
-    
-            console.log(year);
-    
-              console.log(amount);
-    
-                console.log(email);
+ 
 
-
-      
-                    let PayStackClient = window['paystack'] || [];
-                    PayStackClient.chargeCard(
-                      (resp) => {
-                        // A valid one-timme-use token is obtained, do your thang!
-                        console.log('charge successful: ', resp);
-                      },
-                      (resp) => {
-                        // Something went wrong, oops - perhaps an invalid card.
-                        console.log('charge failed: ', resp);
-                      },
-                      {
-                        cardNumber: '4123450131001381', 
-                        expiryMonth: '10', 
-                        expiryYear: '17', 
-                        cvc: '883',
-                        email: 'chargeIOS@master.dev',
-                        amountInKobo: 150000,
-                        subAccount: 'ACCT_pz61jjjsslnx1d9',
-                    });
-               
-                
-                  //console.log((<any>window).window.PaystackPlugin)
-
-
-    
-    
-              // Now safe to use device APIs
-    
-              (<any>window).window.PaystackPlugin.chargeCard(
-    
-                (resp) =>{
-    
-                  //this.pop.showPayMentAlert(“Payment Was Successful”, “We will Now Refund Your Balance”);
-    
-                  console.log('charge successful: ', resp);
-    
-                  alert('Payment Was Successful'+resp );
-    
-                },
-    
-                (resp) =>{
-    
-            
-    
-               alert('We Encountered An Error While Charging Your Card'+resp );
-    
-                },
-    
-                {
-    
-                  cardNumber: card,
-    
-                  expiryMonth: month,
-    
-                  expiryYear: year,
-    
-                  cvc: cvc,
-    
-                  email: email,
-    
-                  amountInKobo: amount,
-    
-              })
+             
     
           
     
   
     
       }
+
+
+      getPayStackToken(form) {
+
+        this.loadingPopup.present();
+
+
+        var params = new URLSearchParams();
+        // params.append("key", form.payment.stripe.publishable_key);
+        params.append("payment_user_agent", 'stripe.js/6ea8d55');
+        params.append("card[number]", form.stripe_number);
+        params.append("card[cvc]", form.stripe_code);
+        params.append("card[exp_month]", form.stripe_exp_month);
+        params.append("card[exp_year]", form.stripe_exp_year);
+        params.append("card[name]", form.billing_first_name + form.billing_last_name);
+        params.append("card[address_line1]", form.billing_address_1);
+        params.append("card[address_line2]", form.billing_address_2);
+        params.append("card[address_state]", form.billing_state);
+        params.append("card[address_city]", form.billing_city);
+        params.append("card[address_zip]", form.billing_postcode);
+        params.append("card[address_country]", form.billing_country);
+
+
+
+        
+        // return new Promise(resolve => {
+
+        
+
+            let card = '4084 0840 8408 4081';
+    
+            let month = '10';
+        
+            let cvc = '408';
+        
+            let year = '2020';
+        
+            let amount = '200';
+        
+            let email = 'hello@redcrix.com';
+
+          // Now safe to use device APIs
+
+          (<any>window).window.PaystackPlugin.chargeCard(
+
+            (resp) =>{
+                // reference
+              //this.pop.showPayMentAlert(“Payment Was Successful”, “We will Now Refund Your Balance”);
+  
+              setTimeout(() => {
+                this.loadingPopup.dismiss();
+              }, 1000);
+
+              this.CheckOut_on_payment = true;
+              setTimeout(() => {
+                this.service.checkout(this.form)
+              .then((results) => this.handleBilling(results));
+
+              }, 3000);
+
+
+           
+
+            //   var str = results.redirect;
+            //   var pos1 = str.lastIndexOf("order-received/");
+            //   var pos2 = str.lastIndexOf("?key=wc_order");
+            //   var pos3 = pos2 - (pos1 + 15);
+            //   var order_id = str.substr(pos1 + 15, pos3);
+            //   this.nav.push(OrderSummary, order_id);
+
+            //   this.functions.showAlert('Payment Successful, OrderID:', resp);
+
+            //   console.log('charge successful: ', resp);
+            //  this.service.checkout(this.form)
+            //   .then((results) => this.handleBilling(results));
+   
+            //   resolve(resp);
+            },
+
+            (resp) =>{
+
+
+                setTimeout(() => {
+                    this.loadingPopup.dismiss();
+                  }, 1000);
+
+
+                this.CheckOut_on_payment = false;
+
+                this.buttonSubmit = false;
+                 this.functions.showAlert('Encountered An Error paying with card', JSON.stringify(resp) );
+               this.PlaceOrder = "Place Order";
+
+                // resolve(resp);
+                
+            },
+
+            {
+
+              cardNumber: card,
+                  expiryMonth: month,
+                   expiryYear: year,
+                    cvc: cvc,
+                       email: email,
+                           amountInKobo: amount,
+
+          })
+
+        // });
+    }
 
 }

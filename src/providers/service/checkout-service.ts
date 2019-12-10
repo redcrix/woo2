@@ -51,6 +51,9 @@ export class CheckoutService {
         });
     }
     checkout(form) {
+
+        // alert('check>>');
+
         var params = new URLSearchParams();
         params.append("billing_first_name", form.billing_first_name);
         params.append("billing_last_name", form.billing_last_name);
@@ -89,6 +92,9 @@ export class CheckoutService {
             this.http.post(this.config.url + '/checkout?wc-ajax=checkout', params, this.config.options).map(res => res.json()).subscribe(data => {
                 this.http.get(this.config.url + '/checkout?wc-ajax=update_order_review', this.config.options).map(res => res.json()).subscribe(data => {
                     //Order updated
+
+                    console.log(data);
+                    
                 });
                 resolve(data);
             });
@@ -223,6 +229,8 @@ export class CheckoutService {
             });
         });
     }
+
+  
     getStripeToken(form) {
         var params = new URLSearchParams();
         params.append("key", form.payment.stripe.publishable_key);

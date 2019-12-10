@@ -173,9 +173,9 @@
             <div *ngIf="form.payment_method =='paystack'" class="side-heading-background stripe-payment">
                 <ion-label style="padding: 10px 10px 0 0;" [innerHTML]="form.payment.paystack.description"> </ion-label>
                 <ion-item class="side-heading-background">
-                    <ion-label color="side-heading-color"> Card Details </ion-label>
+                    <ion-label color="side-heading-color"> Checkout with your Credit/Debit Cards or Internet banking. </ion-label>
                 </ion-item>
-                <form #f="ngForm">
+                <!-- <form #f="ngForm">
                     <ion-list no-margin>
                         <ion-item>
                             <ion-label floating>{{"Card Number" | translate}} </ion-label>
@@ -194,7 +194,7 @@
                             <ion-input required type="text" [(ngModel)]="form.stripe_code" name="stripe_code"> </ion-input>
                         </ion-item>
                     </ion-list>
-                </form>
+                </form> -->
                 <ion-item class="side-heading-background" no-lines>
                     <ion-label>{{"I Agree" | translate}} <a (click)="terms()">{{"Terms & Conditions" | translate}}</a> </ion-label>
                     <ion-toggle checked="true" [(ngModel)]="form.terms" name="terms"> </ion-toggle>

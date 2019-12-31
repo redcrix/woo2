@@ -4,7 +4,7 @@ import { PrivateDiningPage } from './private-dining';
 
 @NgModule({
   declarations: [
-    PrivateDiningPage,
+    // PrivateDiningPage,
   ],
   imports: [
     IonicPageModule.forChild(PrivateDiningPage),

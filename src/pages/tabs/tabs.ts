@@ -6,7 +6,7 @@ import { CartPage } from '../cart/cart';
 import { Orders } from '../account/orders/orders';
 import { Login } from '../account/login/login';
 
-import { ProductsPage } from '../products/products';
+// import { ProductsPage } from '../products/products';
 
 import { MapPage } from '../map/map';
 

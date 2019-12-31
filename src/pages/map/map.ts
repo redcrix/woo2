@@ -80,9 +80,20 @@ export class MapPage {
 
 
     Phn_dialer(Numbr){
+
+ 
+        
+        console.log();
+        
         this.callNumber.callNumber(Numbr, true)
-        .then(res => console.log('Launched dialer!', res))
-        .catch(err => console.log('Error launching dialer', err));
+        .then(res => alert( JSON.stringify(res)))
+        .catch(err => alert(JSON.stringify(err)));
+    }
+
+    Phn_dialer2(Numbr){
+
+    window.open(`tel:12345`, '_system');
+
     }
    
 }

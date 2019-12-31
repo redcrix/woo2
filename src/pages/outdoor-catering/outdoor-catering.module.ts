@@ -4,7 +4,7 @@ import { OutdoorCateringPage } from './outdoor-catering';
 
 @NgModule({
   declarations: [
-    OutdoorCateringPage,
+    // OutdoorCateringPage,
   ],
   imports: [
     IonicPageModule.forChild(OutdoorCateringPage),

@@ -8,7 +8,7 @@ import { Functions } from '../../../providers/service/functions';
 import { OneSignal } from '@ionic-native/onesignal';
 import { Platform } from 'ionic-angular';
 import { Blog } from '../../blog/blog';
-import { MapPage } from '../../map/map';
+// import { MapPage } from '../../map/map';
 import { Address } from '../address/address';
 import { TermsCondition } from '../../checkout/terms-condition/terms-condition';
 import { WishlistPage } from '../wishlist/wishlist';
@@ -192,13 +192,13 @@ export class Login {
 
             this.functions.showAlert(this.lan.ErrorTitle, results.message);
             
-            // if (this.platform.is('cordova')) {
-            //     this.oneSignal.sendTags({
-            //         email: this.registerData.email,
-            //         pincode: this.registerData.billing_address.postcode,
-            //         city: this.registerData.billing_address.city
-            //     });
-            // }
+            if (this.platform.is('cordova')) {
+                this.oneSignal.sendTags({
+                    email: this.registerData.email,
+                    pincode: this.registerData.billing_address.postcode,
+                    city: this.registerData.billing_address.city
+                });
+            }
             this.nav.setRoot(Login);
         } else if (results.code) {
             this.disableSubmit = false;

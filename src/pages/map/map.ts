@@ -92,7 +92,7 @@ export class MapPage {
 
     Phn_dialer2(Numbr){
 
-    window.open(`tel:12345`, '_system');
+    window.open(`tel:`+Numbr, '_system');
 
     }
    

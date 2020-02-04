@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>46321665625-t5voaa0h5epc1ej0ni49jv3toub9h09d.apps.googleusercontent.com</string>
+	<string>346421188206-c5195b4c796mkg30vk7cu57t14bclm1r.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.46321665625-t5voaa0h5epc1ej0ni49jv3toub9h09d</string>
+	<string>com.googleusercontent.apps.346421188206-c5195b4c796mkg30vk7cu57t14bclm1r</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>346421188206-6582j8846dujhjuft4tg7qu35bupuc97.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCo1BVFExwKeOjdLBPDWvTKjnz9PrYZSq8</string>
+	<string>AIzaSyDoEOhbfgBihMV9YofUsYsonDNj1vsx3iQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>46321665625</string>
+	<string>346421188206</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.avantview.foodies</string>
+	<string>com.foodiesonline.mapp</string>
 	<key>PROJECT_ID</key>
-	<string>foodie-57003</string>
+	<string>foodiesapp-20ddd</string>
 	<key>STORAGE_BUCKET</key>
-	<string>foodie-57003.appspot.com</string>
+	<string>foodiesapp-20ddd.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:46321665625:ios:3ca0aa1be468823f659348</string>
+	<string>1:346421188206:ios:db50eaff0bc0d6d478b87f</string>
 	<key>DATABASE_URL</key>
-	<string>https://foodie-57003.firebaseio.com</string>
+	<string>https://foodiesapp-20ddd.firebaseio.com</string>
 </dict>
 </plist>

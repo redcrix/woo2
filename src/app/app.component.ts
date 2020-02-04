@@ -65,6 +65,7 @@ export class MyApp {
           this.splashScreen.hide();
           this.values.calc(this.platform.width());
       if (this.platform.is('cordova')) {
+          debugger;
           this.oneSignal.startInit(this.values.settings.onesignal_app_id, this.values.settings.google_project_id);
           //this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
           this.oneSignal.handleNotificationReceived().subscribe(result => {

@@ -1,41 +1,49 @@
 {
   "project_info": {
-    "project_number": "46321665625",
-    "firebase_url": "https://foodie-57003.firebaseio.com",
-    "project_id": "foodie-57003",
-    "storage_bucket": "foodie-57003.appspot.com"
+    "project_number": "346421188206",
+    "firebase_url": "https://foodiesapp-20ddd.firebaseio.com",
+    "project_id": "foodiesapp-20ddd",
+    "storage_bucket": "foodiesapp-20ddd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:46321665625:android:c0940bc3063e578d659348",
+        "mobilesdk_app_id": "1:346421188206:android:79ae4f49fa924e9278b87f",
         "android_client_info": {
-          "package_name": "com.greenwill.cleanever"
+          "package_name": "com.foodiesonline.mapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "46321665625-ijt4ok3jjm70j3asp9bjg9sdua2olbb5.apps.googleusercontent.com",
+          "client_id": "346421188206-6582j8846dujhjuft4tg7qu35bupuc97.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.foodiesonline.mapp",
+            "certificate_hash": "9216fd42689f0e54bb3af622b7283b79172bf0f5"
+          }
+        },
+        {
+          "client_id": "346421188206-hfbq2gpo0f3auvk44nr4criikg0dqbak.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCMkzHfzdy5AhWz298P2PsQaZiPWuvCQUc"
+          "current_key": "AIzaSyAd0JnuVZI4qzKmSPky3Af98EXtuW0x6uw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "46321665625-ijt4ok3jjm70j3asp9bjg9sdua2olbb5.apps.googleusercontent.com",
+              "client_id": "346421188206-hfbq2gpo0f3auvk44nr4criikg0dqbak.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "46321665625-t5voaa0h5epc1ej0ni49jv3toub9h09d.apps.googleusercontent.com",
+              "client_id": "346421188206-c5195b4c796mkg30vk7cu57t14bclm1r.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.avantview.foodies"
+                "bundle_id": "com.foodiesonline.mapp"
               }
             }
           ]

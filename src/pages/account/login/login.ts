@@ -229,7 +229,7 @@ export class Login {
         this.googleSpinner = true;
         this.googlePlus.login({
             'scopes': '',
-            'webClientId': '46321665625-ijt4ok3jjm70j3asp9bjg9sdua2olbb5.apps.googleusercontent.com',
+            'webClientId': '346421188206-6582j8846dujhjuft4tg7qu35bupuc97.apps.googleusercontent.com',
             'offline': true
         }).then((res) => {
             console.log(res);

@@ -29,4 +29,11 @@ export class PrivateDiningPage {
     .catch(err => console.log('Error launching dialer', err));
 }
 
+Phn_dialer2(Numbr){
+
+  window.open(`tel:`+Numbr, '_system');
+
+  }
+  
+
 }

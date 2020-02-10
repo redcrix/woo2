@@ -99,6 +99,11 @@ export class Login {
     }
 
     handleResults(results) {
+
+        console.log('==================='+JSON.stringify(results));
+
+        
+        
         this.disableSubmit = false;
         this.LogIn = "LogIn";
         if (!results.errors) {
@@ -182,6 +187,12 @@ export class Login {
         }
     }
     handleRegister(results) {
+
+        console.log('==============='+JSON.stringify(results));
+
+
+     
+        
         if (!results.code) {
             this.Register = "Logging In...";
             this.countries.checkout_login;
@@ -189,8 +200,8 @@ export class Login {
                 this.loginStatus = results;
                 this.disableSubmit = false;
             });
-
-            this.functions.showAlert(this.lan.ErrorTitle, results.message);
+            console.log(JSON.stringify(results));
+            this.functions.showAlert('Registered Successfully. Please check your email for login credentials.', results.message);
             
             if (this.platform.is('cordova')) {
                 this.oneSignal.sendTags({
@@ -201,8 +212,11 @@ export class Login {
             }
             this.nav.setRoot(Login);
         } else if (results.code) {
+            console.log('2======'+JSON.stringify(results));
+            console.log(results.code);
+            
             this.disableSubmit = false;
-            this.functions.showAlert(this.lan.ErrorTitle, results.message);
+            this.functions.showAlert(results.code, results.message);
         }
     }
     facebookLogin() {

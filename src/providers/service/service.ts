@@ -276,13 +276,13 @@ export class Service {
         return new Promise(resolve => {
             this.http.post(this.config.setUrl('POST', '/wp-json/wc/v2/customers?', false), params, {withCredentials: false}).map(res => res.json()).subscribe(data => {
                 
-                console.log('REGISTER DATA == '+data);
+                console.log('REGISTER DATA == '+JSON.stringify(data));
                 
                 this.user = data;
                 resolve(this.user);
             }, err => {
 
-                console.log('REGISTER ERROR == '+err);
+                console.log('REGISTER ERROR == '+JSON.stringify(err));
                 
                 resolve(JSON.parse(err._body));
             });

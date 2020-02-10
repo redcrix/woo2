@@ -46,10 +46,10 @@
             <ion-icon item-left style="color:#fff; padding-right: 5px;" ios="logo-facebook" md="logo-facebook"></ion-icon>
              Facebook
           </button> </ion-col>
-                            <ion-col class="col2"> <button ion-button block type="submit" class="button button-block button-default" text-uppercase  (click)="gmailLogin()">
+                            <!-- <ion-col class="col2"> <button ion-button block type="submit" class="button button-block button-default" text-uppercase  (click)="gmailLogin()">
             <ion-icon style="color:#fff; padding-right: 5px;" ios="logo-google" md="logo-google"></ion-icon>
              Google
-          </button> </ion-col>
+          </button> </ion-col> -->
         </ion-row>
                     </form> <br> </div>
             </div>
@@ -90,7 +90,9 @@
                     <div *ngIf="errors" class="margin-error-message">
                         <h3>{{errors.message}} </h3>
                     </div> <br> <button ion-button block color="button-color" type="submit" class="button button-block button-default" text-uppercase [disabled]="disableSubmit" (click)="registerCustomer()">{{Register | translate}}
-        </button> </form>
+        </button> 
+    
+    </form>
             </div>
         </div>
     </div>

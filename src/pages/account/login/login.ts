@@ -83,7 +83,14 @@ export class Login {
         if (this.validateForm()) {
             this.disableSubmit = true;
             this.LogIn = "Logging In";
+            console.log(JSON.stringify(this.loginData));
+            
             this.service.login(this.loginData).then((results) => this.handleResults(results));
+        }
+
+        else{
+            this.functions.showAlert('Please check your email' ,'');
+       
         }
     }
 
@@ -101,15 +108,12 @@ export class Login {
     handleResults(results) {
 
         console.log('==================='+JSON.stringify(results));
-
-        
-        
         this.disableSubmit = false;
         this.LogIn = "LogIn";
         if (!results.errors) {
-           this.functions.showAlert(this.lan.Success, this.lan.LoginSuccessMessage);
+           this.functions.showAlert('Success', 'Loggin in...');
         } else if (results.errors) {
-            this.functions.showAlert(this.lan.ErrorTitle, this.lan.ErrorMessage);
+            this.functions.showAlert('Error' , JSON.stringify(results.errors));
         }
     }
 
@@ -194,12 +198,19 @@ export class Login {
      
         
         if (!results.code) {
+
+            console.log('============'+JSON.stringify(this.registerData.username));
+            console.log('============'+JSON.stringify(this.registerData.password));
+
+
             this.Register = "Logging In...";
             this.countries.checkout_login;
             this.service.login(this.registerData).then((results) => {
                 this.loginStatus = results;
                 this.disableSubmit = false;
             });
+
+            this.disableSubmit = false;
             console.log(JSON.stringify(results));
             this.functions.showAlert('Registered Successfully. Please check your email for login credentials.', results.message);
             

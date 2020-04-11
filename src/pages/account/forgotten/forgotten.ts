@@ -59,6 +59,12 @@ export class AccountForgotten {
         this.url = results.url;
     }
     handleResult(results, email) {
+
+        console.log(results);
+
+        console.log(this.lan);
+        
+        
         this.Reset = "Reset";
         this.disableSubmit = false;
         this.functions.showAlert(this.lan.Success, this.lan.SuccessMessage + email);

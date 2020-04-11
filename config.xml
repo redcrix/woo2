@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.foodiesonline.mapp" version="0.1.3" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="1" id="com.foodiesonline.mapp" version="0.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Foodies</name>
     <description>Hot and Spicy</description>
     <author email="website@foodiesonline.com.ng" href="http://foodiesonline.com.ng/">foodiesonline Team</author>
@@ -21,7 +21,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <platform name="android">
-        <preference name="android-minSdkVersion" value="19" />
+        <preference name="android-minSdkVersion" value="24" />
         <custom-config-file parent="application" target="AndroidManifest.xml">
             <meta-data android:name="co.paystack.android.PublicKey" android:value="pk_test_eb650b9828862d14db575e6c6ab3f06764e48902" />
         </custom-config-file>
@@ -53,6 +53,12 @@
         <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
             <string>To get your order to the exact site, allow Foodies to access your location.</string>
         </edit-config>
+        <preference name="deployment-target" value="9.0" />
+        <preference name="pods_use_frameworks" value="true" />
+        <pod name="GoogleSignIn" />
+        <pod name="FBSDKCoreKit" />
+        <pod name="FBSDKLoginKit" />
+        <pod name="FBSDKShareKit" />
         <preference name="publicKey" value="pk_test_eb650b9828862d14db575e6c6ab3f06764e48902" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
@@ -107,7 +113,6 @@
         <splash height="2436" src="resources/ios/splash/Default-2436h.png" width="1125" />
         <splash height="1125" src="resources/ios/splash/Default-Landscape-2436h.png" width="2436" />
     </platform>
-    <engine name="browser" spec="6.0.0" />
     <plugin name="onesignal-cordova-plugin" spec="^2.8.1" />
     <plugin name="cordova-plugin-network-information" spec="^2.0.2" />
     <plugin name="cordova-plugin-nativestorage" spec="^2.3.2" />
@@ -130,16 +135,17 @@
     </plugin>
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.2.0" />
     <plugin name="mx.ferreyra.callnumber" spec="0.0.2" />
-    <plugin name="cordova-plugin-googleplus" spec="^8.1.1">
+    <plugin name="cordova-plugin-googleplus" spec="^8.2.1">
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.46321665625-t5voaa0h5epc1ej0ni49jv3toub9h09d" />
         <variable name="WEB_APPLICATION_CLIENT_ID" value="46321665625-t5voaa0h5epc1ej0ni49jv3toub9h09d.apps.googleusercontent.com" />
     </plugin>
     <plugin name="cordova-custom-config" spec="^5.1.0" />
-    <plugin name="cordova-plugin-facebook4" spec="^6.2.0">
+    <plugin name="cordova-plugin-facebook4" spec="5.0.0">
         <variable name="APP_ID" value="2529191433770953" />
         <variable name="APP_NAME" value="Foodies Mobile App" />
         <variable name="FACEBOOK_HYBRID_APP_EVENTS" value="false" />
         <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="5.5.2" />
     </plugin>
     <plugin name="call-number" spec="1.0.1" />
+    <engine name="browser" spec="6.0.0" />
 </widget>

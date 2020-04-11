@@ -137,6 +137,9 @@ export class Service {
         });
     }
     login(loginData) {
+
+        console.log('loginData'+loginData);
+        
         var params = new URLSearchParams();
         params.append("username", loginData.username);
         params.append("password", loginData.password);

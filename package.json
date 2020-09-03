@@ -41,7 +41,7 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "call-number": "1.0.1",
     "cordova": "^9.0.0",
-    "cordova-android": "^5.2.2",
+    "cordova-android": "^6.0.0",
     "cordova-browser": "6.0.0",
     "cordova-common": "^3.2.1",
     "cordova-custom-config": "^5.1.0",
